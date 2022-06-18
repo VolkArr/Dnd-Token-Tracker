@@ -31,16 +31,16 @@ void MainWindow::make_window(){
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect  screenGeometry = screen->geometry();
 
-    setGeometry(screenGeometry.width()/2 - 300, screenGeometry.height()/2 - 250,1000,500);
+    setGeometry(screenGeometry.width()/2 - 300, screenGeometry.height()/2 - 250,1015,500);
 
     setStyleSheet("QFrame#isBorder { border: 1px solid; border-radius: 2px}");
     setStyleSheet("QScrollArea { border: 1px solid; border-radius: 2px}");
 
-    scroll->setGeometry(10,10 ,width() - 210,height() - 10);
+    scroll->setGeometry(10,10 ,width() - 210,height() - 20);
     scroll->setWidget(ls.get());
     scroll->setWidgetResizable(true);
 
-    menu->setGeometry(scroll->geometry().x() + scroll->geometry().width() + 10, scroll->geometry().y(), 150, 500);
+    menu->setGeometry(scroll->geometry().x() + scroll->geometry().width() + 25, scroll->geometry().y(), 150, 500);
 
 
     setFixedSize(width(), height());

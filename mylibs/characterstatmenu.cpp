@@ -37,6 +37,7 @@ void CharacterStatMenu::alocate_mem(){
     initiative = std::unique_ptr<QLabel>(new QLabel(this));
     initiative_line = std::unique_ptr<QLineEdit>(new QLineEdit(this));
     addDex = std::unique_ptr<QRadioButton>(new QRadioButton(this));
+    addDexINIT = std::unique_ptr<QRadioButton>(new QRadioButton(this));
 
     Tips = std::unique_ptr<QLabel>(new QLabel(this));
 }
@@ -95,11 +96,15 @@ void CharacterStatMenu::make_window(){
     initiative->setGeometry(addDex->x(),addDex->y()+addDex->height()+5,80,20);
     initiative_line->setGeometry(initiative->x() + initiative->width()+2,initiative->y() ,60,20);
     initiative_line->setValidator(validatorCD);
-    initiative_line->setText("10");
+    initiative_line->setText("0");
+
+
+    addDexINIT->setText("Добавить Лов. к Иниц");
+    addDexINIT->setGeometry(initiative->x(),initiative->y()+initiative->height()+5,150,20);
 
     QIntValidator* validatorSTAT = new QIntValidator(1,100,this);
 
-    STR->setGeometry(initiative->x(),initiative->y()+initiative->height()+5,30,30);
+    STR->setGeometry(addDexINIT->x(),addDexINIT->y()+addDexINIT->height()+5,30,30);
     STR_line->setGeometry(STR->x()+STR->width()+2,STR->y(), 30, 30);
     STR_line->setValidator(validatorSTAT);
     STR_line->setText("10");
@@ -160,14 +165,24 @@ void CharacterStatMenu::Send(){
     stats.CHA = CHA_line->text().toInt();
 
 
-    if(addDex->isChecked()){
+    if(!(addDex->isChecked())){
         stats.CD = CD_line->text().toInt();
     }
     else{
         stats.CD = CD_line->text().toInt() + stats.getMod().DEX_m;
     }
 
-    stats.initiative = roll_D20() + stats.getMod().DEX_m;
+    if(initiative_line->text() == "0"){
+        stats.initiative = roll_D20() + stats.getMod().DEX_m;
+    }
+    else{
+        if(addDexINIT->isChecked()){
+            stats.initiative = initiative_line->text().toInt() + stats.getMod().DEX_m;
+        }
+        else{
+            stats.initiative = initiative_line->text().toInt();
+        }
+    }
 
     if(dice->currentText() == "d4"){
         long current = 0;

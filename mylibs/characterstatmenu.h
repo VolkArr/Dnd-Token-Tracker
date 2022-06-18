@@ -69,6 +69,7 @@ private:
 
     std::unique_ptr<QLabel> initiative;
     std::unique_ptr<QLineEdit> initiative_line;
+    std::unique_ptr<QRadioButton> addDexINIT;
 
 
 
