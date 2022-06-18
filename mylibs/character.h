@@ -51,11 +51,12 @@ private:
 
 
 signals:
-    void InitiativeChanged();
+
 
 private slots:
-     void Roll_initiative();
-     void Roll_HP();
+     void deletePersonBtn();
+     void CheckStatsBtn();
+     void takeDmg();
 
 };
 

@@ -25,6 +25,8 @@ private:
     void alocate_mem();
     void make_window();
     void conn();
+
+private slots:
     void sortByInitiative();
 
 signals:

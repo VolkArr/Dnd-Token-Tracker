@@ -17,12 +17,19 @@ Character::Character( STATS stats, QWidget *parent): QFrame(parent), character_S
 }
 
 
-void Character::Roll_initiative(){
+void Character::deletePersonBtn(){
+    setParent(nullptr);
+    delete this;
+}
+
+void Character::CheckStatsBtn(){
 
 }
 
-void Character::Roll_HP(){
-
+void Character::takeDmg(){
+    QString tmp = QString::fromStdString(std::to_string(currentHP_label->text().toInt() - atack->text().toInt()));
+    currentHP_label->setText(tmp);
+    if(currentHP_label->text().toInt() <= 0) deletePersonBtn();
 }
 
 void Character::visualSettings(){
@@ -101,5 +108,6 @@ void Character::make_window(){
 
 
 void Character::conn(){
-
+    connect(deletePreson.get(), &QPushButton::clicked, this, &Character::deletePersonBtn);
+    connect(atackBTN.get(), &QPushButton::clicked, this, &Character::takeDmg);
 }

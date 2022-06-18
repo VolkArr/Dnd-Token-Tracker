@@ -42,7 +42,7 @@ long roll_D100(){
 
 QString randomName(){
 
-    QFile file(QDir::currentPath() + "/names.txt");
+    QFile file(QDir::currentPath() + "./data/names.txt");
 
     if (!file.open(QIODevice::ReadOnly))
         return QString("");
