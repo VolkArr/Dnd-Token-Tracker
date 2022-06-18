@@ -109,9 +109,9 @@ void CharacterStatMenu::make_window(){
     STR_line->setValidator(validatorSTAT);
     STR_line->setText("10");
 
-    Tips->setText("Подсказка! Исправить ХП и остальные статы можно двойным нажатием на стат в списке персонажей");
+    Tips->setText("Подсказка! Исправить ХП и остальные статы можно двойным нажатием на стат в списке персонажей           Если инициатива = 0, то она ролиться 1д20+ЛОВ");
     Tips->setWordWrap(true);
-    Tips->setGeometry(STR_line->x()+STR_line->width() + 20, STR_line->y(), 60,200);
+    Tips->setGeometry(STR_line->x()+STR_line->width() + 20, STR_line->y(), 60,250);
 
     DEX->setGeometry(STR->x(),STR->y()+STR->height()+5,30,30);
     DEX_line->setGeometry(DEX->x()+DEX->width()+2,DEX->y(), 30, 30);

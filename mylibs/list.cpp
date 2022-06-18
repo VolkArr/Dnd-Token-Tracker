@@ -10,6 +10,7 @@ list::list(short w_t, short h_t, QWidget *parent) : QFrame(parent), w{w_t}, h{h_
 
 void list::add(STATS stats){
     Character* tmp = new Character(stats);
+    connect(tmp, &Character::initiativeChanged, this, &list::sortByInitiative);
     ls->addWidget(tmp);
     sortByInitiative();
 

@@ -25,6 +25,7 @@ add_library(${PROJECT_NAME}
   ./characterstatmenu.cpp
   ./list.cpp
   ./menu.cpp
+  ./editablelabel.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Widgets utils)

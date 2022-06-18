@@ -12,6 +12,7 @@
 
 #include "../utils/structs.h"
 #include "../utils/Randomizer.h"
+#include "editablelabel.h"
 
 #include <memory>
 
@@ -32,10 +33,10 @@ private:
     std::unique_ptr<QPushButton> CheckStats;
     std::unique_ptr<QPushButton> atackBTN;
     std::unique_ptr<QLabel> name_label;
-    std::unique_ptr<QLabel> init_label;
-    std::unique_ptr<QLabel> CD_label;
-    std::unique_ptr<QLabel> maxHP_label;
-    std::unique_ptr<QLabel> currentHP_label;
+    std::unique_ptr<EditableLabel> init_label;
+    std::unique_ptr<EditableLabel> CD_label;
+    std::unique_ptr<EditableLabel> maxHP_label;
+    std::unique_ptr<EditableLabel> currentHP_label;
     std::unique_ptr<QLineEdit> atack;
 
     std::unique_ptr<QLabel> INIT;
@@ -51,12 +52,14 @@ private:
 
 
 signals:
-
+    void initiativeChanged();
 
 private slots:
      void deletePersonBtn();
      void CheckStatsBtn();
      void takeDmg();
+
+     void initChanged();
 
 };
 

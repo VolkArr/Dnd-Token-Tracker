@@ -51,5 +51,6 @@ QString randomName(){
     for(size_t i = 1; i < rnd; i++){
         file.readLine();
     }
+    file.close();
     return QString::fromStdString(file.readLine().toStdString());
 }

@@ -43,10 +43,10 @@ void Character::alocate_mem(){
    CheckStats = std::unique_ptr<QPushButton>(new QPushButton(this));
    atackBTN = std::unique_ptr<QPushButton>(new QPushButton(this));
    name_label = std::unique_ptr<QLabel>(new QLabel(this));
-   init_label = std::unique_ptr<QLabel>(new QLabel(this));
-   CD_label = std::unique_ptr<QLabel>(new QLabel(this));
-   maxHP_label = std::unique_ptr<QLabel>(new QLabel(this));
-   currentHP_label = std::unique_ptr<QLabel>(new QLabel(this));
+   init_label = std::unique_ptr<EditableLabel>(new EditableLabel(this));
+   CD_label = std::unique_ptr<EditableLabel>(new EditableLabel(this));
+   maxHP_label = std::unique_ptr<EditableLabel>(new EditableLabel(this));
+   currentHP_label = std::unique_ptr<EditableLabel>(new EditableLabel(this));
    HP = std::unique_ptr<QLabel>(new QLabel(this));
    CD = std::unique_ptr<QLabel>(new QLabel(this));
    INIT = std::unique_ptr<QLabel>(new QLabel(this));
@@ -105,9 +105,13 @@ void Character::make_window(){
     //setGeometry(0,0, rollInitiative->x() + rollInitiative->width() + 10, atack->y() + atack->height() + 20);
 }
 
-
+void Character::initChanged(){
+    emit initiativeChanged();
+}
 
 void Character::conn(){
     connect(deletePreson.get(), &QPushButton::clicked, this, &Character::deletePersonBtn);
     connect(atackBTN.get(), &QPushButton::clicked, this, &Character::takeDmg);
+    connect(init_label.get(), &EditableLabel::statChanged, this, &Character::initChanged);
+
 }
