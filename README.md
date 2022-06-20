@@ -1,4 +1,4 @@
-#Token Tracker
+# Token Tracker
 
 I often run into problems with initiative rolls and turn order when playing DND. All the applications that I tried seemed not convenient to me and I wanted to try to create my own such application. I finished it with the bare minimum of features. 
 
