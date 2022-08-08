@@ -1,22 +1,13 @@
-# DndInitiativeHelper
+Almost completely updated interface.
+Added tabs for saving events.
+Players and tokens are now separated ( Greens are players,
+red are mobs, gray - 0 player hp)
+Party tab added.
+To start a party battle with an event - select the event and click on the button to start the battle.
+Added delete event button.
 
-I often run into problems with initiative rolls and turn order when playing DND. All the applications that I tried seemed not convenient to me and I wanted to try to create my own such application. I finished it with the bare minimum of features. 
+IN THE PLANS:
+Add text parser for mobs with dnd-club format.
+Add a yolo neural network and write a mob parser from pictures.
 
-It supports:
-Quick addition of tokens, characters. 
-Sort by initiative.
-HP Dice Selection
-Removal from the field
-Taking damage
-
-In the plans:
-Improving styling with css
-Creating a database with characters
-More flexible add character menu
-Page parser from MonsterManual or screenshot
-DB with monsters
-
-Well... Overall, I'm planning this as a big dnd helper that can make the game easier to play. For example procedural generation of events with history. World Event Tracking Timers for the guards walking through the crypt, labyrinth or somewhere else If you have any ideas what to add - write! I will be glad to ideas
-
-
-Oh and it`s full RUS i will add ENG support later
+NO THE "VIEW STATS" BUTTON STILL DOES NOT WORK
