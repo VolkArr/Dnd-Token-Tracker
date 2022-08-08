@@ -1,30 +1,18 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
-#include <QObject>
-#include <QFrame>
-#include <QPushButton>
-#include <QLabel>
-#include <QLineEdit>
-#include <QFile>
-#include <QDebug>
+#include <person.h>
 
-
-#include "../utils/structs.h"
-#include "../utils/Randomizer.h"
-#include "editablelabel.h"
-
-#include <memory>
-
-class Character : public QFrame
+class Character : public Person
 {
     Q_OBJECT
 public:
     explicit Character(QWidget *parent = nullptr);
     Character(STATS stats, QWidget *parent = nullptr);
 
-    int getInitiative(){return init_label->text().toInt();}
-
+    int getInitiative() override{return init_label->text().toInt();}
+    QString getName() override{return character_Stats.name;}
+    STATS getSTATS() override{return character_Stats;}
 private:
 
     STATS character_Stats;
@@ -38,6 +26,7 @@ private:
     std::unique_ptr<EditableLabel> maxHP_label;
     std::unique_ptr<EditableLabel> currentHP_label;
     std::unique_ptr<QLineEdit> atack;
+    std::unique_ptr<QLabel> status;
 
     std::unique_ptr<QLabel> INIT;
     std::unique_ptr<QLabel> CD;
@@ -45,21 +34,23 @@ private:
 
 
 private:
-    void visualSettings();
-    void alocate_mem();
-    void make_window();
-    void conn();
+    void visualSettings() override;
+    void alocate_mem() override;
+    void make_window() override;
+    void conn() override;
+
+    void init();
 
 
 signals:
-    void initiativeChanged();
+    void initiativeChanged() override;
 
 private slots:
-     void deletePersonBtn();
+     void deletePersonBtn() override;
      void CheckStatsBtn();
-     void takeDmg();
+     void takeDmg() ;
 
-     void initChanged();
+     void initChanged() override;
 
 };
 

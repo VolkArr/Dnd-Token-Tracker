@@ -29,6 +29,9 @@ struct STATS{
         initiative = tmp->initiative;
 
         name = tmp->name;
+        type = tmp->type;
+
+
 
     }
 
@@ -45,9 +48,10 @@ struct STATS{
         initiative = 0;
 
         name = "";
+        type = "token";
     }
 
-    STATS( uint8_t STR_t, uint8_t DEX_t, uint8_t CON_t, uint8_t INT_t, uint8_t WIS_t, uint8_t CHA_t, uint8_t CD_t, uint8_t HP_t, uint8_t initiative_t, QString name_t){
+    STATS( uint8_t STR_t, uint8_t DEX_t, uint8_t CON_t, uint8_t INT_t, uint8_t WIS_t, uint8_t CHA_t, uint8_t CD_t, uint8_t HP_t, uint8_t initiative_t, QString name_t, QString type_t){
         STR = STR_t;
         DEX = DEX_t;
         CON = CON_t;
@@ -60,6 +64,7 @@ struct STATS{
         initiative = initiative_t;
 
         name = name_t;
+        type = type_t;
     }
 
     MOD getMod(){
@@ -87,6 +92,8 @@ struct STATS{
     uint16_t HP;
 
     uint16_t initiative;
+
+    QString type;
 };
 
 

@@ -1,21 +1,23 @@
 #include "character.h"
 
-Character::Character(QWidget *parent) : QFrame(parent), character_Stats{STATS()}
+Character::Character(QWidget *parent) : Person(parent), character_Stats{STATS()}
 {
 
+    init();
+}
+
+
+Character::Character( STATS stats, QWidget *parent): Person(parent), character_Stats{stats}{
+
+    init();
+}
+
+
+void Character::init(){
     alocate_mem();
     make_window();
     conn();
 }
-
-
-Character::Character( STATS stats, QWidget *parent): QFrame(parent), character_Stats{stats}{
-
-    alocate_mem();
-    make_window();
-    conn();
-}
-
 
 void Character::deletePersonBtn(){
     setParent(nullptr);
@@ -50,7 +52,8 @@ void Character::alocate_mem(){
    HP = std::unique_ptr<QLabel>(new QLabel(this));
    CD = std::unique_ptr<QLabel>(new QLabel(this));
    INIT = std::unique_ptr<QLabel>(new QLabel(this));
-   atack = std::unique_ptr<QLineEdit>(new QLineEdit(this));;
+   atack = std::unique_ptr<QLineEdit>(new QLineEdit(this));
+   status = std::unique_ptr<QLabel>(new QLabel(this));
 }
 
 void Character::make_window(){
@@ -59,36 +62,37 @@ void Character::make_window(){
     setStyleSheet("QFrame#isBorder { border: 1px solid; border-radius: 2px}");
 
     INIT->setText("Инициатива: ");
-    HP->setText("ХП: Максимум/Текущее");
-    CD->setText("Класс Доспехов");
+    HP->setText("ХП: max/curr");
+    CD->setText("CD:");
 
-
+    status->setGeometry(5,5, 30, 75);
+    status->setStyleSheet("QLabel { background-color : red;  }");
 
     if( character_Stats.name.count() == 0){
         character_Stats.name = randomName();
     }
 
     name_label->setText(character_Stats.name);
-    name_label->setGeometry(10,10,80,25);
+    name_label->setGeometry(status->x() + status->width() + 10,status->y(),100,25);
 
 
-    INIT->setGeometry(name_label->x() + name_label->width() + 10,name_label->y(),100,25);
+    INIT->setGeometry(name_label->x() + name_label->width() + 10,name_label->y(),70,25);
     init_label->setText(QString::fromStdString(std::to_string(character_Stats.initiative)));
-    init_label->setGeometry(INIT->x() + INIT->width() + 1,INIT->y(),30,25);
+    init_label->setGeometry(INIT->x() + INIT->width() + 5,INIT->y(),32,25);
 
 
-    CD->setGeometry(init_label->x() + init_label->width() + 10,init_label->y(),100,25);
+    CD->setGeometry(init_label->x() + init_label->width() + 10,init_label->y(),30,25);
     CD_label->setText(QString::fromStdString(std::to_string(character_Stats.CD)));
-    CD_label->setGeometry(CD->x() + CD->width() + 1,CD->y(),20,25);
+    CD_label->setGeometry(CD->x() + CD->width() + 5,CD->y(),20,25);
 
-    HP->setGeometry(CD_label->x() + CD_label->width() + 10,CD_label->y(),150,25);
+    HP->setGeometry(CD_label->x() + CD_label->width() + 10,CD_label->y(),80,25);
     maxHP_label->setText(QString::fromStdString(std::to_string(character_Stats.HP)));
-    maxHP_label->setGeometry(HP->x() + HP->width() + 1,HP->y(),30,25);
+    maxHP_label->setGeometry(HP->x() + HP->width() + 5,HP->y(),30,25);
 
     currentHP_label->setText(QString::fromStdString(std::to_string(character_Stats.HP)));
     currentHP_label->setGeometry(maxHP_label->x() + maxHP_label->width() + 1,maxHP_label->y(),30,25);
 
-    deletePreson->setText("Удалить");
+    deletePreson->setText("Убить");
     deletePreson->setGeometry(currentHP_label->x() + currentHP_label->width() + 10,currentHP_label->y(), 60,25);
 
     atack->setGeometry(deletePreson->x(), deletePreson->y() + deletePreson->height() + 10, 60, 25);

@@ -7,6 +7,7 @@
 
 
 #include "character.h"
+#include "player.h"
 
 class list : public QFrame
 {
@@ -15,6 +16,9 @@ public:
     explicit list(short w, short h, QWidget *parent = nullptr);
 
    void add(STATS stats);
+   int getSize();
+   std::vector<QString> getNames();
+   std::vector<STATS> getSTATS();
 
 private:
    std::unique_ptr<QVBoxLayout> ls;

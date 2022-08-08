@@ -21,9 +21,10 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Widgets REQUIRED)
 
 include_directories(.)
 
-add_executable(${PROJECT_NAME}
+add_executable(${PROJECT_NAME} WIN32
   ./main.cpp
   ./mainwindow.cpp
+  ./mainwindow.h
 )
 
 

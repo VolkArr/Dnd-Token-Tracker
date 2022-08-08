@@ -13,12 +13,14 @@
 #include <QRadioButton>
 #include <QRandomGenerator>
 #include <QDebug>
+#include <QCheckBox>
 
 
 #include "../utils/structs.h"
 #include "../utils/Randomizer.h"
 
 Q_DECLARE_METATYPE(STATS);
+
 
 class CharacterStatMenu : public QDialog
 {
@@ -30,7 +32,6 @@ public:
 
 private:
 
-    std::unique_ptr<QLabel> Tips;
 
     std::unique_ptr<QLabel> name;
     std::unique_ptr<QLineEdit> name_line;
@@ -56,7 +57,7 @@ private:
 
     std::unique_ptr<QLabel> CD;
     std::unique_ptr<QLineEdit> CD_line;
-    std::unique_ptr<QRadioButton> addDex;
+    std::unique_ptr<QCheckBox> addDex;
 
 
 
@@ -69,7 +70,7 @@ private:
 
     std::unique_ptr<QLabel> initiative;
     std::unique_ptr<QLineEdit> initiative_line;
-    std::unique_ptr<QRadioButton> addDexINIT;
+    std::unique_ptr<QCheckBox> addDexINIT;
 
 
 

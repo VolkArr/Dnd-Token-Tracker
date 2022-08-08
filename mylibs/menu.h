@@ -13,6 +13,9 @@ public:
 
 public:
     std::unique_ptr<QPushButton> addCharacter;
+    std::unique_ptr<QPushButton> addPlayer;
+    std::unique_ptr<QPushButton> startFight;
+    std::unique_ptr<QPushButton> deleteEvent;
 
 private:
     void alocate_mem();
